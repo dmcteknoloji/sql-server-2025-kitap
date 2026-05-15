@@ -14,6 +14,12 @@
 
 ---
 
+## Kitabı indir
+
+📖 **PDF (ücretsiz):** [GitHub Releases → Latest](../../releases/latest)
+🌐 **Web sürüm (ücretsiz):** [caglarozenc.com/kitap/sqlserver2025](https://caglarozenc.com/kitap/sqlserver2025)
+📚 **Fiziksel baskı (250 ₺, opsiyonel destekçi):** [dmcteknoloji.com/kitap](https://dmcteknoloji.com/kitap)
+
 ## Bu repo'da ne var?
 
 ```
@@ -22,9 +28,10 @@
 │   ├── bolum-01..32/     32 bölüm × 2-6 .sql per bölüm
 │   └── _ortak/           Setup script + demo veritabanı
 ├── kontrol/
-│   ├── test-runs/        Çalıştırma çıktıları + bilinen sorunlar kataloğu
-│   ├── run-tests.sh      Toplu test koşucusu (credential maskeli)
-│   └── beta-okur-bulgulari.md
+│   ├── kod-test-rehberi.md  SQL Server 2025 instance üstünde test koşum playbook'u
+│   ├── run-tests.sh         Toplu test koşucusu (credential maskeli)
+│   └── test-runs/
+│       └── _known-issues.md Bilinen sorunlar kataloğu (şeffaf liste)
 ├── README.md             (bu dosya)
 ├── CONTRIBUTING.md       Katkı kuralları
 ├── ERRATA.md             v1.0 düzeltmeleri (okuyucu katkısıyla büyür)
@@ -32,10 +39,7 @@
 └── LICENSE               CC BY-NC-SA 4.0 (metin) + MIT (kod)
 ```
 
-**Kitap içeriği:**
-- **PDF + EPUB (ücretsiz):** [GitHub Releases](../../releases/latest) — direkt indir
-- **Web sürüm (ücretsiz):** [caglarozenc.com/kitap/sqlserver2025](https://caglarozenc.com/kitap/sqlserver2025) — tarayıcıda oku
-- **Fiziksel baskı (250 ₺, opsiyonel destekçi):** [dmcteknoloji.com](https://dmcteknoloji.com/kitap)
+**Kitap içeriği** (HTML kaynak, build pipeline) ayrı tutulur; bu repo **kod örnekleri + topluluk altyapısı** odaklıdır.
 
 ---
 
@@ -64,7 +68,7 @@ sqlcmd -S <server> -U <user> -P <pwd> -d master -C \
 
 Çıktılar `kontrol/test-runs/chXX-NN.txt` — hassas bilgiler otomatik maskelidir.
 
-Detaylı playbook: [`kontrol/dba-lansman-test-playbook.md`](./kontrol/dba-lansman-test-playbook.md)
+Detaylı playbook: [`kontrol/kod-test-rehberi.md`](./kontrol/kod-test-rehberi.md)
 
 ### Hata bildirme
 
