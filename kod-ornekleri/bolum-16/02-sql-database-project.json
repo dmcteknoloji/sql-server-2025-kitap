@@ -1,0 +1,22 @@
+{
+  "_comment": "SDK-style demo-database.sqlproj yapısı (XML değil; eşdeğer JSON gösterim)",
+  "Sdk": "Microsoft.Build.Sql/0.2.0-preview",
+  "TargetFramework": "netstandard2.1",
+  "ProjectProperties": {
+    "DSP": "Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider",
+    "SqlServerVerification": false,
+    "DatabaseSchemaProvider": "Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider",
+    "ModelCollation": "1055,CI",
+    "DatabaseCollation": "Latin1_General_CI_AS"
+  },
+  "_xmlEquivalent": "<Project Sdk=\"Microsoft.Build.Sql/0.2.0-preview\">\n  <PropertyGroup>\n    <Name>demo-database</Name>\n    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>\n    <ModelCollation>1055,CI</ModelCollation>\n  </PropertyGroup>\n  <ItemGroup>\n    <Build Include=\"**/*.sql\" />\n  </ItemGroup>\n</Project>",
+  "FolderStructure": {
+    "schemas": ["sales.sql", "ai.sql", "social.sql"],
+    "tables": "src/Tables/*.sql",
+    "indexes": "src/Indexes/*.sql",
+    "procedures": "src/StoredProcedures/*.sql",
+    "functions": "src/Functions/*.sql",
+    "predeploy": "Scripts/PreDeploy.sql",
+    "postdeploy": "Scripts/PostDeploy.sql"
+  }
+}

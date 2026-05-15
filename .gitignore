@@ -1,0 +1,65 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Build artifacts (build pipeline çıktısı repo'da değil)
+build/book.html
+build/book.pdf
+
+# Test çıktıları — hassas veri içerebilir
+kontrol/test-runs/*.txt
+!kontrol/test-runs/_known-issues.md
+!kontrol/test-runs/_to-embed.md
+!kontrol/test-runs/_summary.txt
+
+# Credential'lar (KESİNLİKLE repo'ya gitmemeli)
+*.env
+.env.*
+credentials.json
+*.pfx
+*.pem
+*.key
+
+# Sıkıştırılmış dosyalar
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+
+# Log
+*.log
+logs/
+
+# IDE arifaktları
+.sql-formatter-config
+*.suo
+*.user

@@ -1,0 +1,93 @@
+# ============================================================================
+# 03-github-actions-pipeline.yml
+# ----------------------------------------------------------------------------
+# CI: build DACPAC, deploy to test, run smoke tests.
+# ============================================================================
+
+name: SQL Server Database CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build DACPAC
+        run: |
+          dotnet build -c Release src/demo-database/demo-database.sqlproj
+          ls -la src/demo-database/bin/Release/
+
+      - name: Upload DACPAC artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-database-dacpac
+          path: src/demo-database/bin/Release/demo-database.dacpac
+
+  deploy-test:
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: Download DACPAC
+        uses: actions/download-artifact@v4
+        with:
+          name: demo-database-dacpac
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: SqlPackage Publish
+        uses: azure/sql-action@v2.3
+        with:
+          connection-string: ${{ secrets.SQL_TEST_CONNECTION_STRING }}
+          path: demo-database.dacpac
+          action: 'publish'
+          arguments: '/p:BlockOnPossibleDataLoss=true /p:IncludeTransactionalScripts=true'
+
+      - name: Smoke test
+        run: |
+          # Schema check
+          sqlcmd -S ${{ secrets.SQL_TEST_SERVER }} -d demo \
+                 -G \
+                 -Q "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'sales';"
+
+  deploy-prod:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://dmcteknoloji.com
+    steps:
+      - name: Manual approval
+        run: echo "Production deploy gate (set in environment)"
+
+      - name: Download DACPAC
+        uses: actions/download-artifact@v4
+        with:
+          name: demo-database-dacpac
+
+      - name: Deploy to production
+        uses: azure/sql-action@v2.3
+        with:
+          connection-string: ${{ secrets.SQL_PROD_CONNECTION_STRING }}
+          path: demo-database.dacpac
+          action: 'publish'
+          arguments: '/p:BlockOnPossibleDataLoss=true'

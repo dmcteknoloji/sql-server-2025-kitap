@@ -1,0 +1,31 @@
+{
+  "_comment": "CES tarafından yayılan CloudEvents (CNCF spec) JSON örneği. 11 attribute.",
+  "_referans": "https://github.com/cloudevents/spec",
+
+  "specversion": "1.0",
+  "type": "Microsoft.SqlServer.RowChange.Insert",
+  "source": "/sqlserver/instances/SQLNODE1/databases/demo/tables/sales.orders",
+  "id": "abc123-def456-ghi789",
+  "time": "2026-05-15T11:30:42.123Z",
+  "datacontenttype": "application/json",
+  "subject": "sales.orders/order_id=1234",
+
+  "transaction_id": "0x000000000001",
+  "commit_timestamp": "2026-05-15T11:30:41.999Z",
+  "schema_version": 1,
+  "sequence_number": 4587,
+
+  "data": {
+    "operation": "INSERT",
+    "table": "sales.orders",
+    "primary_key": {"order_id": 1234},
+    "before": null,
+    "after": {
+      "order_id": 1234,
+      "customer_id": 1,
+      "order_date": "2026-05-15T11:30:41Z",
+      "status": "pending",
+      "total_amount": 970.00
+    }
+  }
+}
