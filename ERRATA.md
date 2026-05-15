@@ -1,6 +1,6 @@
 # Errata — SQL Server 2025: Herkes İçin, Her Rol İçin
 
-**Sürüm:** v1.0 (20 Haziran 2026)
+**Sürüm:** v1.0 (15 Mayıs 2026)
 **Son güncelleme:** [lansman günü canlı]
 **Kaynak:** [Issues `errata` etiketi](../../issues?q=label%3Aerrata)
 

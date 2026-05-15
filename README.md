@@ -3,13 +3,13 @@
 > Türkçe SQL Server 2025 başucu kitabı — kod örnekleri, errata, topluluk Q&A
 
 [![Latest release](https://img.shields.io/badge/release-v1.0-blue)](../../releases)
-[![Book PDF](https://img.shields.io/badge/PDF-v1.0%20Haziran%202026-green)](https://caglarozenc.com/kitap/sqlserver2025)
+[![Book PDF](https://img.shields.io/badge/PDF-v1.0%20Mayıs%202026-green)](https://caglarozenc.com/kitap/sqlserver2025)
 [![Errata](https://img.shields.io/badge/errata-canli-orange)](./ERRATA.md)
 [![License](https://img.shields.io/badge/lisans-CC%20BY--NC--SA%204.0%20%2B%20MIT-lightgrey)](./LICENSE)
 
 **Yazar:** Çağlar Özenç · Microsoft Data Platform MVP
 **Yayıncı:** DMC Bilgi Teknolojileri · İstanbul
-**Sürüm:** v1.0 (Haziran 2026)
+**Sürüm:** v1.0 (15 Mayıs 2026)
 **Baseline:** SQL Server 2025 RTM-CU4-GDR (KB5089899) · build 17.0.4040.1 · Compatibility Level 170
 
 ---
@@ -125,7 +125,7 @@ Detaylı içerik: [caglarozenc.com/kitap/icerik](https://caglarozenc.com/kitap/i
 
 | Sürüm | Tarih | İçerik |
 |---|---|---|
-| **v1.0** | Haziran 2026 | İlk yayın · CU4-GDR baseline |
+| **v1.0** | 15 Mayıs 2026 | İlk yayın · CU4-GDR baseline |
 | v1.0.x | Aylık | Errata + küçük güncellemeler |
 | **v1.1** | Mart 2027 | CU5-CU8 + EU AI Act yüksek risk yansıması |
 | v1.2 | Eylül 2027 | KVKK cirosal ceza sonrası uyum |
@@ -201,4 +201,4 @@ DMC Bilgi Teknolojileri'nin yedi yıllık kurumsal danışmanlık tecrübesi bu 
 
 *"SQL artık sadece BT'nin işi değil. Bu kitap on bir rol için yazıldı çünkü 2025 sonrası dünyada artık tek bir 'kullanıcı' yok; her rol kendi sözlüğünü konuşur, kendi sorusunu sorar, kendi cevabını ister."*
 
-— Çağlar Özenç, Haziran 2026
+— Çağlar Özenç, 15 Mayıs 2026

@@ -6,7 +6,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 
 ---
 
-## [v1.0.0] — 20 Haziran 2026
+## [v1.0.0] — 15 Mayıs 2026
 
 ### İlk yayın
 
