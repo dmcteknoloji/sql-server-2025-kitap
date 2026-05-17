@@ -5,7 +5,7 @@
 **Kapsam:** 32 bölümün kod-ornekleri/ altındaki tüm .sql dosyaları
 **Sonuç:** 81 script çalıştı / 29 OK / 52 FAIL / 10 boş bölüm (24-32 arası)
 
-Bu liste yayın öncesi (Faz 7 beta okur turu + Faz 8 son kontrol) sıfırlanmak üzere açık tutulur.
+Bu liste topluluk geri bildirimleriyle birlikte sürekli güncellenir; v1.1 baskısı (Mart 2027) ile derli toplu yansır.
 
 ---
 
@@ -17,7 +17,7 @@ Bu liste yayın öncesi (Faz 7 beta okur turu + Faz 8 son kontrol) sıfırlanmak
 
 ### A2. Always On AG / mirroring kurulu değil
 - `ch08-01`, `ch08-02`, `ch08-04` (Msg 35208, 35221)
-  - **Durum:** Always On AG kurulum yapılmadan DDL çalıştırılamaz. Bu testler AG mevcut bir cluster gerektirir. Beta okur turunda AG-kurulu sandbox üzerinde teyit edilmeli.
+  - **Durum:** Always On AG kurulum yapılmadan DDL çalıştırılamaz. Bu testler AG mevcut bir cluster gerektirir. v1.1 hazırlığında AG-kurulu sandbox üzerinde teyit edilecek.
 - `ch18-01`, `ch18-03` (Msg 207 invalid column, Msg 208 invalid object)
   - **Durum:** Mirroring DMV'leri (`sys.dm_change_feeds_log_scan_sessions`, `is_change_tracking_on`) Fabric Mirroring etkin olmadığında bazı sütunlar oluşturulmuyor olabilir. Fabric workspace'le bağlı bir DB'de yeniden test gerek.
 
@@ -127,5 +127,5 @@ Bu liste yayın öncesi (Faz 7 beta okur turu + Faz 8 son kontrol) sıfırlanmak
 - **29 OK çıktısı** kitap bölümlerine "Çalıştırma çıktısı" kutusu olarak gömülebilir (Plan B Faz 4 ikinci yarı).
 - **B1+B2+B3 = ~24 bug** bir gün içinde tek tek düzeltilebilir.
 - **B4 = 4 karmaşık** Microsoft Learn'in son güncellemeleriyle çapraz kontrol gerek.
-- **Kategori A**'nın tümü Faz 7 beta okur sandbox'ında yapılandırılmış instance üzerinde yeniden koşacak.
+- **Kategori A**'nın tümü v1.1 hazırlığı sırasında yapılandırılmış instance (AG cluster, Enterprise edition, vb.) üzerinde yeniden koşacak.
 - **Kategori C** bölüm 24-29 için kod örneği yazma işidir.

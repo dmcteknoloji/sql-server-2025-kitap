@@ -12,21 +12,30 @@
 **Sürüm:** v1.0 (15 Mayıs 2026)
 **Baseline:** SQL Server 2025 RTM-CU4-GDR (KB5089899) · build 17.0.4040.1 · Compatibility Level 170
 
+> **Repo durumu**
+> - v1.0 yayında — PDF + EPUB + web sürümü tamamen ücretsiz (CC BY-NC-SA 4.0)
+> - 32 bölüm tam, 448 sayfa, 158 terim sözlük, 12 diyagram
+> - 100+ T-SQL örneği gerçek SQL Server 2025 instance'ında test edilmiş
+> - Errata akışı topluluk-tabanlı, sürekli açık ([ERRATA.md](./ERRATA.md))
+> - v1.0.x aylık küçük güncellemeler · v1.1 ana baskı Mart 2027 hedefi
+
 ---
 
 ## Kitabı indir
 
 📖 **PDF (ücretsiz):** [GitHub Releases → Latest](../../releases/latest)
-🌐 **Web sürüm (ücretsiz):** [caglarozenc.com/kitap/sqlserver2025](https://caglarozenc.com/kitap/sqlserver2025)
-📚 **Fiziksel baskı (250 ₺, opsiyonel destekçi):** [dmcteknoloji.com/kitap](https://dmcteknoloji.com/kitap)
+🌐 **Landing sayfası:** [caglarozenc.com/kitap/sqlserver2025](https://caglarozenc.com/kitap/sqlserver2025) — kitap detayları, içerikler, yol haritası
+📚 **Fiziksel baskı (700 ₺, opsiyonel destekçi):** 448 sayfa ofset ciltli edition, Türkiye kargo + ambalaj dahil. PDF/EPUB zaten ücretsiz; fiziksel kopya eseri rafta görmek isteyen ve topluluk yayın bakımına destekçi katkı sunmak isteyen okur içindir. [DMC ile iletişime geçin](https://dmcteknoloji.com/iletisim)
 
 ## Bu repo'da ne var?
 
 ```
 .
-├── kod-ornekleri/        Her bölümün T-SQL örnekleri (test edilmiş)
-│   ├── bolum-01..32/     32 bölüm × 2-6 .sql per bölüm
+├── kod-ornekleri/        T-SQL örnekleri (test edilmiş)
+│   ├── bolum-01..26/     Teknik bölümlerin .sql dosyaları
+│   ├── bolum-29/         Türkçe AI ekosistemi örnekleri
 │   └── _ortak/           Setup script + demo veritabanı
+│                         (Bölüm 27, 28, 30-32 metin ağırlıklıdır, kod gerektirmez)
 ├── kontrol/
 │   ├── kod-test-rehberi.md  SQL Server 2025 instance üstünde test koşum playbook'u
 │   ├── run-tests.sh         Toplu test koşucusu (credential maskeli)
@@ -139,8 +148,6 @@ Detaylı: [`CHANGELOG.md`](./CHANGELOG.md)
 
 Bu kitap **CC BY-NC-SA 4.0** lisansı altında ücretsiz dağıtılır. Türkçe SQL Server 2025 kapsamlı kaynak yokken bunu satışla sınırlamak topluluğa karşı bir kayıp olurdu. Yazar ve yayıncı gelirini kitap satışından değil DMC'nin kurumsal danışmanlık, eğitim ve atölyelerinden alır — kitap, bu hizmetlerin altyapısı; topluluğa armağan.
 
-İstersen [GitHub Sponsors](https://github.com/sponsors/caglarozenc) üzerinden destekçi olabilirsin; künyede teşekkür listesinde yer alırsın. Hiç zorunlu değil.
-
 ---
 
 ## Katkıda bulun
@@ -185,14 +192,12 @@ Detaylı: [`LICENSE`](./LICENSE)
 
 ## Teşekkürler
 
-**Beta okuyucular:** [İsim listesi — beta okur turu sonrası]
-
-**Topluluk:** Microsoft Türkiye veri platformu topluluğu, Microsoft MVP topluluğu, Türkiye SQL Server kullanıcı grupları
+**Topluluk:** Microsoft Türkiye veri platformu topluluğu, Microsoft MVP topluluğu, Türkiye SQL Server kullanıcı grupları. Errata ve iyileştirme önerileri için issue açan herkes künyede teşekkür listesinde yer alır.
 
 **Referans:**
 
 - Bob Ward — "SQL Server 2025 Unveiled" (Apress, 2025) — İngilizce kanonik referans
-- Yaşar Gözüdeli — "MS SQL Server" (Seçkin Yayınevi) — Türkçe başucu geleneğine selam
+- Türkçe SQL Server alanında yıllardır kitap, blog, video ve eğitim üreten tüm yazarlara — Türkçe veri yayıncılığı geleneğine emek verenler
 - Microsoft Learn dokümantasyon ekibi
 
 DMC Bilgi Teknolojileri'nin yedi yıllık kurumsal danışmanlık tecrübesi bu kitabın saha damarını besler.

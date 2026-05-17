@@ -22,7 +22,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
   - Kısım V — AI/Mimari Yolu (B21-26)
   - Kısım VI — Türkiye Penceresi ve Gelecek (B27-32)
 - **Arka bölüm:** 158 terim sözlüğü (TR/EN), birincil kaynak listesi (30+ URL), Changelog, Yazar/Yayıncı, Künye
-- **Açılış:** Kapak, tam başlık, TOC (446 sayfa), Yazardan Önsöz, Kitabın Haritası
+- **Açılış:** Kapak, tam başlık, TOC (448 sayfa), Yazardan Önsöz, Kitabın Haritası
 - **12 SVG diyagram** (kronoloji, modern mimari, HNSW, RAG, AI pipeline, AI-ready, regulation, rowgroup lifecycle, embedding pipeline, hybrid search, HTAP, MCP agent flow)
 - **100+ T-SQL kod örneği** test edilmiş ve doğrulanmış (`kod-ornekleri/` repo'da)
 - **Test koşum altyapısı:** `kontrol/run-tests.sh` credential maskeli batch runner
@@ -69,7 +69,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 | Sürüm | Hedef | İçerik |
 |---|---|---|
 | v1.0.x | Aylık | Errata + küçük güncellemeler (web sürüm) |
-| **v1.1** | Mart 2027 | CU5-CU8 birikim + EU AI Act yüksek risk yansıması + beta okur turunda öne çıkan iyileştirmeler |
+| **v1.1** | Mart 2027 | CU5-CU8 birikim + EU AI Act yüksek risk yansıması + topluluk errata/önerilerinden gelen iyileştirmeler |
 | v1.2 | Eylül 2027 | KVKK cirosal ceza sonrası uyum güncellemesi + Türkçe AI ekosistemi yenilenmiş modeller |
 | **v2.0** | 2028 | SQL Server vNext baskısı — mimari kısımlar yeniden ele alınır |
 
