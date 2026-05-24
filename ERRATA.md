@@ -1,7 +1,7 @@
 # Errata — SQL Server 2025: Herkes İçin, Her Rol İçin
 
-**Sürüm:** v1.0 (15 Mayıs 2026)
-**Son güncelleme:** [lansman günü canlı]
+**Sürüm:** v1.0.1 (25 Mayıs 2026)
+**Son güncelleme:** 25 Mayıs 2026 — CU5 güncellemesi
 **Kaynak:** [Issues `errata` etiketi](../../issues?q=label%3Aerrata)
 
 Bu sayfa kitabın v1.0 baskısındaki düzeltmelerin canlı listesidir. Bir hata fark ettiyseniz [issue açın](../../issues/new?template=errata.md), `errata` etiketiyle. Doğrulandığında bu sayfaya işlenir; v1.1'de gövdeye yansır.
@@ -37,11 +37,28 @@ GitHub issue: #XX
 - Vector indexes PREVIEW kapsamında
 - Standard Edition'da Resource Governor açık, online vector index build mevcut
 
-### [Sonraki CU yayını sonrası — şablon]
+### 25 Mayıs 2026 — CU5 (KB5084896) güncellemesi (v1.0.1)
 
-- CU5 ne getirdi: ...
-- Kitabın hangi bölümlerini etkiliyor: ...
-- Düzeltme satırları: ...
+CU5 20 Mayıs 2026'da yayımlandı (build 17.0.4045.5). Kitap v1.0.1 ile CU5 baseline'ına güncellendi.
+
+**CU5 yenilikler:**
+- `max lock manager cache memory (%)` konfigürasyonu — lock manager cache bellek üst sınırı kontrolü
+- `FulltextIndexVersion2` database-scoped config ile etkinleştirme
+- Change feed parametreleri `mssql.conf` ile yapılandırılabilir (Linux)
+
+**CU5 güvenlik düzeltmeleri:**
+- CVE-2026-40370: SSIS Web Service Task XXE açığı (file:// protokolü engellendi)
+- `sp_help_spatial_geography_index` / `sp_help_spatial_geometry_index` SQL injection düzeltmesi
+
+**CU5 known issue:**
+- `SESSION_CONTEXT` paralel plan'larda hatalı sonuç veya access violation dump üretebilir (connection pooling session reset sonrası)
+
+**Etkilenen bölümler:**
+- Bölüm 1, 2, 3: sürüm referansları ve @@VERSION çıktıları CU5'e güncellendi
+- Bölüm 6: `max lock manager cache memory (%)` notu eklendi
+- Bölüm 9: SESSION_CONTEXT known issue uyarı kutusu eklendi
+
+Kaynak: [KB5084896](https://learn.microsoft.com/en-us/troubleshoot/sql/releases/sqlserver-2025/cumulativeupdate5)
 
 ### 2 Ağustos 2026 — EU AI Act yüksek risk yükümlülükleri
 

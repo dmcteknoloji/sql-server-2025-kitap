@@ -6,6 +6,36 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 
 ---
 
+## [v1.0.1] — 25 Mayıs 2026
+
+### CU5 güncellemesi
+
+Kitap baseline'ı CU4'ten CU5'e (KB5084896, 20 Mayıs 2026, build 17.0.4045.5) güncellendi.
+
+#### Eklendi
+
+- **Bölüm 6 (Optimized Locking):** CU5 ile gelen `max lock manager cache memory (%)` konfigürasyonu — lock manager cache bellek üst sınırını yüzdesel olarak kontrol etme
+- **Bölüm 9 (Güvenlik/RLS):** `SESSION_CONTEXT` paralel plan known issue uyarı kutusu — CU5'te belgelenen, paralel sorgu plan'larında hatalı sonuç veya access violation üretebilme sorunu
+
+#### Değiştirildi
+
+- Bölüm 1, 2, 3: sürüm referansları ve `@@VERSION` çıktıları CU5'e güncellendi
+- Ön bölüm baseline notu, künye, sözlük CU girişleri CU5'e güncellendi
+- Yol haritası: v1.1 kapsamı CU6-CU8 olarak daraltıldı (CU5 artık v1.0.1'de)
+
+#### Güvenlik
+
+- CVE-2026-40370: SSIS Web Service Task XXE açığı (file:// protokolü engellendi) — CU5 ve RTM GDR (KB5091223) ile düzeltildi
+- `sp_help_spatial_geography_index` / `sp_help_spatial_geometry_index` SQL injection düzeltmesi
+
+#### CU5 diğer yenilikler (kitap kapsamında not düşüldü)
+
+- `FulltextIndexVersion2` database-scoped config ile etkinleştirme
+- Change feed parametreleri `mssql.conf` ile yapılandırılabilir (Linux)
+- In-Memory OLTP GC hash index scan CPU starvation düzeltmesi
+
+---
+
 ## [v1.0.0] — 15 Mayıs 2026
 
 ### İlk yayın
@@ -69,7 +99,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 | Sürüm | Hedef | İçerik |
 |---|---|---|
 | v1.0.x | Aylık | Errata + küçük güncellemeler (web sürüm) |
-| **v1.1** | Mart 2027 | CU5-CU8 birikim + EU AI Act yüksek risk yansıması + topluluk errata/önerilerinden gelen iyileştirmeler |
+| **v1.0.1** | 25 Mayıs 2026 | CU5 güncellemesi — baseline CU5'e, Bölüm 6 ve 9 icerik eklendi |
+| **v1.1** | Mart 2027 | CU6-CU8 birikim + EU AI Act yüksek risk yansıması + topluluk errata/önerilerinden gelen iyileştirmeler |
 | v1.2 | Eylül 2027 | KVKK cirosal ceza sonrası uyum güncellemesi + Türkçe AI ekosistemi yenilenmiş modeller |
 | **v2.0** | 2028 | SQL Server vNext baskısı — mimari kısımlar yeniden ele alınır |
 
