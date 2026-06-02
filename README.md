@@ -126,7 +126,7 @@ Bu kitap 11 rol için ayrı yol haritalarıyla yazıldı:
 | V | AI/Mimari Yolu | 21-26 | Architect, Data Scientist |
 | VI | Türkiye Penceresi | 27-32 | Danışman, C-Level |
 
-Detaylı içerik: [caglarozenc.com/kitap/icerik](https://caglarozenc.com/kitap/icerik)
+Detaylı içerik: [caglarozenc.com/kitap/](https://caglarozenc.com/kitap/)
 
 ---
 
