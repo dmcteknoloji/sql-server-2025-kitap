@@ -6,6 +6,40 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 
 ---
 
+## [v1.0.2] — 19 Haziran 2026
+
+### CU6 güncellemesi
+
+Kitap baseline'ı CU5'ten CU6'ya (KB5093421, 17 Haziran 2026, build 17.0.4055.5) güncellendi. CU6, CU5 sonrası 19 düzeltme taşır.
+
+#### Eklendi
+
+- **Bölüm 21 (Vector / DiskANN):** paralel vector index oluşturmada kaynak tükenmesi düzeltmesi notu; ayrıca `bcp` ile `vector(16)`/`vector(32)` bulk import/export ve sıkı TLS sertifika doğrulaması için `-H` / `-J` seçenekleri
+- **Bölüm 9 (Güvenlik):** SSIS parola tabanlı şifrelemenin PBKDF2 SHA-256 / 100.000 iterasyona yükseltilmesi (SQL 2025 hedefli paketler; uyumlu SSDT/SSMS gerekir)
+
+#### Değiştirildi
+
+- Bölüm 1, 2, 3: sürüm referansları ve `@@VERSION` çıktıları CU6'ya (RTM-CU6, build 17.0.4055.5) güncellendi
+- Ön bölüm baseline notu, künye, sözlük CU/build girişleri CU6'ya güncellendi
+- Yol haritası: v1.1 kapsamı CU7-CU10 olarak güncellendi (CU6 artık v1.0.2'de)
+
+#### CU6 diğer düzeltmeler (kitap kapsamında not düşüldü)
+
+- JSON indeks sütununa `NULL` JSON dokümanı ekleme hatası düzeltildi
+- `tempdb` alan muhasebesi düzeltmesi; `FULLTEXT_INDEX_VERSION` varsayılanı Azure SQL MI'de 2'ye çekildi
+- SSIS paketlerinin `Encrypt=Strict` ile dağıtım/çalıştırma düzeltmesi; SNI SSL'de sıfır uzunluklu TLS record düzeltmesi
+
+#### Known issue
+
+- `SESSION_CONTEXT` paralel plan'larda hatalı sonuç (CU5'ten devam — Bölüm 9 uyarı kutusu geçerli)
+- **Yeni:** `MSDASQL` (OLE DB Provider for ODBC) sağlayıcısı + provider string ile linked server sorguları daha sıkı bağlantı doğrulaması nedeniyle Msg 7416 ile başarısız olabilir
+
+#### Güvenlik
+
+- CU6'da numaralı yeni bir CVE yok; güvenlik tarafı SSIS PBKDF2 sertleştirmesi, TLS sertifika doğrulama seçenekleri ve sıfır uzunluklu TLS record düzeltmesiyle ilerledi
+
+---
+
 ## [v1.0.1] — 25 Mayıs 2026
 
 ### CU5 güncellemesi
@@ -100,7 +134,8 @@ Kitap baseline'ı CU4'ten CU5'e (KB5084896, 20 Mayıs 2026, build 17.0.4045.5) g
 |---|---|---|
 | v1.0.x | Aylık | Errata + küçük güncellemeler (web sürüm) |
 | **v1.0.1** | 25 Mayıs 2026 | CU5 güncellemesi — baseline CU5'e, Bölüm 6 ve 9 icerik eklendi |
-| **v1.1** | Mart 2027 | CU6-CU8 birikim + EU AI Act yüksek risk yansıması + topluluk errata/önerilerinden gelen iyileştirmeler |
+| **v1.0.2** | 19 Haziran 2026 | CU6 güncellemesi — baseline CU6'ya, Bölüm 9 ve 21 içerik eklendi |
+| **v1.1** | Mart 2027 | CU7-CU10 birikim + EU AI Act yüksek risk yansıması + topluluk errata/önerilerinden gelen iyileştirmeler |
 | v1.2 | Eylül 2027 | KVKK cirosal ceza sonrası uyum güncellemesi + Türkçe AI ekosistemi yenilenmiş modeller |
 | **v2.0** | 2028 | SQL Server vNext baskısı — mimari kısımlar yeniden ele alınır |
 

@@ -1,7 +1,7 @@
 # Errata — SQL Server 2025: Herkes İçin, Her Rol İçin
 
-**Sürüm:** v1.0.1 (25 Mayıs 2026)
-**Son güncelleme:** 25 Mayıs 2026 — CU5 güncellemesi
+**Sürüm:** v1.0.2 (19 Haziran 2026)
+**Son güncelleme:** 19 Haziran 2026 — CU6 güncellemesi
 **Kaynak:** [Issues `errata` etiketi](../../issues?q=label%3Aerrata)
 
 Bu sayfa kitabın v1.0 baskısındaki düzeltmelerin canlı listesidir. Bir hata fark ettiyseniz [issue açın](../../issues/new?template=errata.md), `errata` etiketiyle. Doğrulandığında bu sayfaya işlenir; v1.1'de gövdeye yansır.
@@ -59,6 +59,29 @@ CU5 20 Mayıs 2026'da yayımlandı (build 17.0.4045.5). Kitap v1.0.1 ile CU5 bas
 - Bölüm 9: SESSION_CONTEXT known issue uyarı kutusu eklendi
 
 Kaynak: [KB5084896](https://learn.microsoft.com/en-us/troubleshoot/sql/releases/sqlserver-2025/cumulativeupdate5)
+
+### 19 Haziran 2026 — CU6 (KB5093421) güncellemesi (v1.0.2)
+
+CU6 17 Haziran 2026'da yayımlandı (build 17.0.4055.5); CU5 sonrası 19 düzeltme. Kitap v1.0.2 ile CU6 baseline'ına güncellendi.
+
+**CU6 öne çıkan düzeltmeler:**
+- Paralel vector index oluşturmada kaynak tükenmesi / performans düşüşü düzeltmesi
+- `bcp` ile `vector(16)`/`vector(32)` bulk import/export + `-H`/`-J` sıkı TLS sertifika doğrulaması
+- SSIS parola tabanlı şifreleme PBKDF2 SHA-256 / 100.000 iterasyona yükseltildi (uyumlu SSDT/SSMS gerekir)
+- JSON indeks sütununa `NULL` JSON dokümanı ekleme hatası; `tempdb` alan muhasebesi; `FULLTEXT_INDEX_VERSION` varsayılanı (Azure SQL MI) düzeltmeleri
+
+**CU6 known issue:**
+- `SESSION_CONTEXT` paralel plan'larda hatalı sonuç (CU5'ten devam)
+- **Yeni:** `MSDASQL` sağlayıcısı + provider string ile linked server sorguları Msg 7416 ile başarısız olabilir (daha sıkı bağlantı doğrulaması)
+
+**Güvenlik:** CU6'da numaralı yeni CVE yok; SSIS PBKDF2 + TLS sertifika doğrulama + sıfır uzunluklu TLS record düzeltmeleriyle ilerledi.
+
+**Etkilenen bölümler:**
+- Bölüm 1, 2, 3: sürüm referansları ve @@VERSION çıktıları CU6'ya güncellendi
+- Bölüm 9: SSIS PBKDF2 sertleştirmesi eklendi
+- Bölüm 21: vector index paralel build düzeltmesi + `bcp` vector desteği eklendi
+
+Kaynak: [KB5093421](https://learn.microsoft.com/en-us/troubleshoot/sql/releases/sqlserver-2025/cumulativeupdate6)
 
 ### 2 Ağustos 2026 — EU AI Act yüksek risk yükümlülükleri
 

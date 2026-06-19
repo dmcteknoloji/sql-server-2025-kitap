@@ -24,7 +24,7 @@ Bu dizin kitabın teknik bölümleri için çalışan, yorumlu T-SQL ve eşlik e
 
 ## Önkoşullar
 
-- **SQL Server 2025** GA (build 17.0.x) — minimum CU0, önerilen **CU5 (KB5084896)** veya üstü
+- **SQL Server 2025** GA (build 17.0.x) — minimum CU0, önerilen **CU6 (KB5093421)** veya üstü
 - **Compatibility Level 170** (database scoped)
 - Preview özellikler için:
   ```sql
