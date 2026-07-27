@@ -8,11 +8,11 @@
 SELECT
     SCHEMA_NAME(schema_id) AS schema_name,
     name AS table_name,
-    is_ledger,
+    ledger_type,
     ledger_type_desc,
     is_dropped_ledger_table  -- sys.tables sütun adı _table eki ile bitiyor
 FROM sys.tables
-WHERE is_ledger = 1;
+WHERE ledger_type <> 0;   -- 0 = NON_LEDGER_TABLE
 GO
 
 -- Temporal (system-versioned) tablolar

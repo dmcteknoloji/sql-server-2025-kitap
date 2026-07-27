@@ -29,7 +29,7 @@ BEGIN
         'query': @query,
         'documents': @hybrid_results,
         'top_n': @top_k,
-        'return_documents': true
+        'return_documents': CAST(1 AS BIT)
     );
 
     DECLARE @response NVARCHAR(MAX);

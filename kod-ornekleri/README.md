@@ -2,29 +2,13 @@
 
 **Kitap:** SQL Server 2025 — Herkes İçin, Her Rol İçin
 **Yazar:** Çağlar Özenç & DMC Bilgi Teknolojileri
-**Sürüm:** v1.0 (15 Mayıs 2026)
+**Sürüm:** v1.0 (Aralık 2026 lansman)
 
-Bu dizin kitabın teknik bölümleri için çalışan, yorumlu T-SQL ve eşlik eden kod örneklerini içerir. Her bölüm kendi alt klasöründedir.
-
-## Klasör kapsamı
-
-- **bolum-01 ... bolum-26**: tüm teknik bölümlerin T-SQL örnekleri
-- **bolum-29**: Türkçe AI ekosistemi (Kumru, Trendyol-LLM, TURNA, BGE-M3 ile embedding örnekleri)
-- **_ortak**: tüm bölümlerin paylaştığı setup script + demo veritabanı
-
-**Klasörü olmayan bölümler** — kod örneği gerektirmeyen metin ağırlıklı bölümler:
-
-| Bölüm | Başlık | Niye kodsuz |
-|---|---|---|
-| 27 | Türkiye Kurumlarında SQL Server 2025 Yol Haritası | Strateji/karar çerçevesi |
-| 28 | KVKK, BTK, Veri Egemenliği ve EU AI Act | Hukuki/uyum çerçevesi |
-| 30 | Sürüm Karşılaştırma Matrisi + Breaking/Deprecated | Referans tablolar |
-| 31 | 2027 ve Sonrası | Roadmap/gelecek senaryoları |
-| 32 | vNext Kütüphanesi (kapanış) | Kaynak listesi |
+Bu dizin kitabın 32 bölümü için çalışan, yorumlu T-SQL ve eşlik eden kod örneklerini içerir. Her bölüm kendi alt klasöründedir.
 
 ## Önkoşullar
 
-- **SQL Server 2025** GA (build 17.0.x) — minimum CU0, önerilen **CU6 (KB5093421)** veya üstü
+- **SQL Server 2025** GA (build 17.0.x) — minimum CU0, önerilen **CU7 (KB5096981)** veya üstü
 - **Compatibility Level 170** (database scoped)
 - Preview özellikler için:
   ```sql

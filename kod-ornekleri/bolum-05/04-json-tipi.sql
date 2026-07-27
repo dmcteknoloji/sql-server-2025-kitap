@@ -43,16 +43,16 @@ JOIN sales.customer_preferences cp ON cp.customer_id = c.customer_id;
 GO
 
 -- JSON_OBJECTAGG: satırları JSON objeye agrega et
-SELECT JSON_OBJECTAGG(p.sku VALUE p.price) AS price_map
+SELECT JSON_OBJECTAGG(p.sku : p.price) AS price_map
 FROM sales.products p;
 GO
 
 -- JSON_ARRAYAGG: satırları JSON array'e agrega et
 SELECT JSON_ARRAYAGG(
     JSON_OBJECT(
-        'product_id' VALUE p.product_id,
-        'name' VALUE p.name,
-        'price' VALUE p.price
+        'product_id' : p.product_id,
+        'name' : p.name,
+        'price' : p.price
     )
 ) AS products_json
 FROM sales.products p;
@@ -60,6 +60,6 @@ GO
 
 -- JSON path ile UPDATE (modify)
 UPDATE sales.customer_preferences
-SET prefs = JSON_MODIFY(prefs, '$.newsletter', CAST('false' AS JSON))
+SET prefs = JSON_MODIFY(prefs, '$.newsletter', CAST(0 AS BIT))
 WHERE customer_id = 1;
 GO

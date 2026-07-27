@@ -36,7 +36,7 @@ SELECT REGEXP_COUNT(N'a1b2c3d4e5', N'\d') AS digit_count;
 GO
 
 -- 6) REGEXP_MATCHES — TVF, tüm eşleşmeler
-SELECT match_value, match_position
+SELECT match_id, match_value, start_position, end_position
 FROM REGEXP_MATCHES(N'Üç ürün: BK-001, EL-002, KH-001', N'[A-Z]{2}-\d{3}');
 GO
 

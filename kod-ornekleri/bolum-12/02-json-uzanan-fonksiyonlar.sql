@@ -53,6 +53,7 @@ GO
 -- 4) JSON sorgularını index'le (bilgisayar sütunu üstünden)
 ALTER TABLE sales.customer_preferences
 ADD lang AS JSON_VALUE(prefs, '$.language') PERSISTED;
+GO
 
 CREATE INDEX ix_customer_prefs_lang
     ON sales.customer_preferences (lang);

@@ -1,5 +1,89 @@
 # Test Koşumu — Bilinen Sorunlar Kataloğu
 
+**Son koşum:** 2026-07-27
+**Sürüm:** SQL Server 2025 RTM-CU7 (KB5096981), build 17.0.4065.4, Enterprise Developer Edition, Linux (Docker)
+**Kapsam:** 32 bölümün `kod-ornekleri/` altındaki tüm .sql dosyaları
+**Sonuç:** 92 script koşuldu — **61 OK / 31 FAIL**
+
+Önceki koşum (2026-05-15, CU4-GDR, Standard Edition, Windows): 81 script / 29 OK / 52 FAIL. O koşumun kaydı bu dosyanın sonunda tarihçe olarak duruyor.
+
+---
+
+## v1.0.3 koşumunda bulunup düzeltilen kitap hataları
+
+Aşağıdakiler çevresel kısıt değil, **gerçek hataydı**; hepsi motor tarafından doğrulanıp düzeltildi.
+
+### Vector index (Bölüm 21, 24)
+
+| Bulgu | Kitapta olan | Doğru olan | Kanıt |
+|---|---|---|---|
+| Salt-okunur kısıtı | Hiç yer almıyordu | Vector index kurulu tablo DML kabul etmez | Msg 42231 |
+| Clustered PK tipi | "clustered primary key indeksli olmalı" | Tek bir 4 baytlık `INT` sütun olmalı | Msg 42217 |
+| FP16 sözdizimi | `WITH (PRECISION = 'half')` | Sütun tipinde: `VECTOR(1536, float16)` | Msg 155 |
+| "En az 100 satır" | Önkoşul olarak yazılmıştı | Yeni index sürümüne (Azure SQL / Fabric) ait; CU7'de uygulanmıyor | Canlı test |
+
+`ALLOW_STALE_VECTOR_INDEX` SQL Server 2025 CU7'de ne veritabanı ne sunucu kapsamında mevcut değil. Learn'ün DML desteğinden söz eden cümleleri Azure SQL / Fabric'teki yeni index sürümü içindir.
+
+Yan etki: `chunk_id` sütunları `BIGINT` → `INT`'e çekildi (`_ortak/00-demo-veritabani.sql`, `bolum-24/01`, `bolum-22/06`, `bolum-24/03`).
+
+### Change Event Streaming (Bölüm 19)
+
+CU7'de **mevcut olmayan** nesneler kitapta kullanılıyordu:
+
+- `sys.event_stream_groups`, `sys.event_stream_group_tables`, `sys.dm_event_stream_status` — üçü de yok (Msg 208), CES etkinleştirilse bile
+- `sys.sp_start_event_stream_group`, `sys.sp_stop_event_stream_group` — yok (Msg 2812)
+
+Gerçekte mevcut olanlar: `sp_enable_event_stream`, `sp_disable_event_stream`, `sp_create_event_stream_group`, `sp_drop_event_stream_group`, `sp_add_object_to_event_stream_group`, `sp_remove_object_from_event_stream_group`. İzleme `sys.dm_change_feed_log_scan_sessions` ve `sys.dm_change_feed_errors` üzerinden yapılır.
+
+### Diğer
+
+- **Bölüm 5** — `JSON_OBJECT` / `JSON_OBJECTAGG`'de `VALUE` anahtar kelimesi SQL Server'da yok; iki nokta kullanılır (`'key' : value`)
+- **Bölüm 5** — `CAST('false' AS JSON)` Msg 13609 verir; JSON tipi kök seviyede skaler kabul etmez, `CAST(0 AS BIT)` kullanılmalı
+- **Bölüm 12** — `REGEXP_MATCHES` sütunları: `match_id`, `start_position`, `end_position`, `match_value`, `substring_matches`. `match_position` yok
+- **Bölüm 12** — Hesaplanan sütun eklendiği batch içinde indekslenemez; araya `GO` gerekir
+- **Bölüm 2** — `sys.tables`'ta `is_ledger` yok; `ledger_type` / `ledger_type_desc` var
+- **Bölüm 18** — `sys.databases`'te `is_change_tracking_on` yok; `sys.change_tracking_databases` ile join gerekir
+- **Bölüm 20** — `sys.databases.is_link_to_synapse_enabled` 2025'te yok (Synapse Link kaldırıldı); sürümden bağımsız tespit `sys.all_columns` üzerinden yapılır
+- **Bölüm 21** — `sys.dm_db_vector_indexes` CU7'de yok; metadata `sys.vector_indexes` katalog görünümünden okunur
+- **Bölüm 23** — `JSON_OBJECT` içinde `true` sütun adı olarak yorumlanır; `CAST(1 AS BIT)` kullanılmalı
+- **Bölüm 9** — `sys.dm_db_attestation_compute_capability` CU7'de yok (Azure SQL DMV'si); enclave durumu `sys.configurations`'tan okunur
+- **Bölüm 10, 18** — Resource Governor örnekleri yeniden koşumda "already exists" ile düşüyordu; workload group'u pool'dan önce düşürecek şekilde idempotent hâle getirildi
+
+---
+
+## Kategori A — Çevresel kısıtlar (test ortamında düzeltilemez)
+
+Kalan 31 hatanın tamamı bu kapsamdadır. Kitap metni doğrudur; script bir dış önkoşul ister.
+
+**A1. Azure Blob Storage credential** — `ch07-01`, `ch07-02`, `ch07-03`, `ch07-04` (Msg 3201, 15530). `BACKUP TO URL` için Database Scoped Credential + Managed Identity gerekir.
+
+**A2. Always On AG kurulu değil** — `ch08-01`, `ch08-02`, `ch08-04`. AG'li bir cluster gerekir.
+
+**A3. Güvenlik altyapısı** — `ch09-01` (parola politikası), `ch09-02` (column encryption key / CMK), `ch09-05` (audit dosya yolu), `ch09-06` (Entra ID), `ch23-04` / `ch29-01` (database master key).
+
+**A4. External model / REST endpoint kimlik bilgisi** — `ch13-01`, `ch13-04`, `ch22-01`, `ch22-02`, `ch22-03`, `ch22-04`, `ch24-02`, `ch24-03`, `ch29-03`. `sp_configure 'external rest endpoint enabled', 1` açık olsa da gerçek endpoint ve credential gerekir.
+
+**A5. Full-Text Search kurulu değil** — `ch23-02`, `ch29-02` (Msg 7609). Container imajında full-text bileşeni yok.
+
+**A6. Fabric Mirroring / hibrit** — `ch18-03`, `ch20-03`. Fabric workspace bağlantısı gerekir.
+
+**A7. Platform / kasıtlı** — `ch11-01` Extended Events örneği Windows yolu kullanıyor (Linux container'da geçersiz). `ch10-03` `ABORT_QUERY_EXECUTION` hint'i **kasıtlı** olarak sorguyu durduruyor; örneğin amacı bu. `ch14-03`, `ch16-04` deadlock grafiği ve tSQLt; ikisi de dış kurulum/eşzamanlı oturum ister. `ch23-03` `ai.usp_hybrid_search` yordamı `ch23-01`'de oluşur, o da external model ister.
+
+---
+
+## Koşum yöntemi ve iki tuzak
+
+Testler container'ın kendi `sqlcmd`'siyle koşuldu (`docker exec`).
+
+1. **`-I` şart.** `sqlcmd` varsayılan olarak `QUOTED_IDENTIFIER` kapalı başlar; hesaplanan sütun ve filtered index içeren örnekler Msg 1934 ile düşer. Bu bir kitap hatası değil, koşucu ayarıdır — ilk koşumda 6 script bu yüzden yanlışlıkla FAIL göründü.
+2. **`docker cp` öncesi `-u root` ile temizlik.** `docker cp` dosyaları root olarak yazar; sonraki `docker exec ... rm -rf` varsayılan kullanıcıyla çalıştığında sessizce başarısız olur ve `docker cp` iç içe dizin yaratır. Sonuç: script'ler bayat kopyadan koşar ve düzeltmeler hiç görünmez.
+
+Ayrıca: CES'i (`sp_enable_event_stream`) bir veritabanında açtıysanız `DROP DATABASE` engellenir (Msg 3763). Test setup'ı veritabanını yeniden kuramaz ve tüm koşum "already exists" hatalarıyla kirlenir. Önce `sp_disable_event_stream`.
+
+---
+
+# Tarihçe — 2026-05-15 koşumu (CU4-GDR, Standard Edition, Windows)
+
 **Tarih:** 2026-05-15
 **Sürüm:** SQL Server 2025 RTM-CU4-GDR (KB5089899), build 17.0.4040.1, Standard Edition
 **Kapsam:** 32 bölümün kod-ornekleri/ altındaki tüm .sql dosyaları

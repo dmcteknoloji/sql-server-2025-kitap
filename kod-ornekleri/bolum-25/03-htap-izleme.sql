@@ -55,12 +55,18 @@ GROUP BY s.object_id, s.state_desc
 ORDER BY total_rows DESC;
 
 -- 5) Lock contention (Optimized Locking sonrası)
+-- Not: request_session_id / resource_type / request_mode sütunları
+-- sys.dm_tran_locks'a aittir; sys.dm_os_waiting_tasks bekleme tarafını verir.
+-- Kilit beklemesini görmek için ikisi join edilir.
 SELECT TOP(20)
-    request_session_id,
-    resource_type,
-    request_mode,
-    request_status,
-    wait_duration_ms
-FROM sys.dm_os_waiting_tasks
-WHERE wait_type LIKE 'LCK_%';
+    l.request_session_id,
+    l.resource_type,
+    l.request_mode,
+    l.request_status,
+    w.wait_duration_ms,
+    w.blocking_session_id
+FROM sys.dm_tran_locks l
+JOIN sys.dm_os_waiting_tasks w
+    ON w.resource_address = l.lock_owner_address
+WHERE w.wait_type LIKE 'LCK_%';
 GO

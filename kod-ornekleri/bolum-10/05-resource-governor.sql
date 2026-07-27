@@ -8,6 +8,17 @@ USE master;
 GO
 
 -- 1) Resource pool
+-- Script yeniden koşulabilsin diye önce temizlik.
+-- Sıra önemli: workload group, bağlı olduğu pool'dan ÖNCE düşürülmeli.
+IF EXISTS (SELECT 1 FROM sys.resource_governor_workload_groups WHERE name = 'wg_reporting')
+    DROP WORKLOAD GROUP wg_reporting;
+GO
+IF EXISTS (SELECT 1 FROM sys.resource_governor_resource_pools WHERE name = 'pool_analytics')
+    DROP RESOURCE POOL pool_analytics;
+GO
+ALTER RESOURCE GOVERNOR RECONFIGURE;
+GO
+
 CREATE RESOURCE POOL pool_analytics
 WITH (
     MIN_CPU_PERCENT = 0,

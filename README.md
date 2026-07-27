@@ -2,15 +2,15 @@
 
 > Türkçe SQL Server 2025 başucu kitabı — kod örnekleri, errata, topluluk Q&A
 
-[![Latest release](https://img.shields.io/badge/release-v1.0.2-blue)](../../releases)
-[![Book PDF](https://img.shields.io/badge/PDF-v1.0.2%20Haziran%202026-green)](https://caglarozenc.com/kitap/sqlserver2025)
+[![Latest release](https://img.shields.io/badge/release-v1.0.3-blue)](../../releases)
+[![Book PDF](https://img.shields.io/badge/PDF-v1.0.3%20Temmuz%202026-green)](https://caglarozenc.com/kitap/sqlserver2025)
 [![Errata](https://img.shields.io/badge/errata-canli-orange)](./ERRATA.md)
 [![License](https://img.shields.io/badge/lisans-CC%20BY--NC--SA%204.0%20%2B%20MIT-lightgrey)](./LICENSE)
 
 **Yazar:** Çağlar Özenç · Microsoft Data Platform MVP
 **Yayıncı:** DMC Bilgi Teknolojileri · İstanbul
-**Sürüm:** v1.0.2 (19 Haziran 2026)
-**Baseline:** SQL Server 2025 CU6 (KB5093421) · build 17.0.4055.5 · Compatibility Level 170
+**Sürüm:** v1.0.3 (27 Temmuz 2026)
+**Baseline:** SQL Server 2025 CU7 (KB5096981) · build 17.0.4065.4 · Compatibility Level 170
 
 > **Repo durumu**
 > - v1.0 yayında — PDF + EPUB + web sürümü tamamen ücretsiz (CC BY-NC-SA 4.0)
@@ -57,7 +57,7 @@
 ### Kod örneklerini çalıştır
 
 ```bash
-# 1. SQL Server 2025 instance hazır olsun (CU6+ önerilir)
+# 1. SQL Server 2025 instance hazır olsun (CU7+ önerilir)
 # 2. Demo veritabanını kur
 sqlcmd -S <server> -U <user> -P <pwd> -d master -C \
        -i kod-ornekleri/_ortak/00-demo-veritabani.sql
@@ -137,8 +137,9 @@ Detaylı içerik: [caglarozenc.com/kitap/](https://caglarozenc.com/kitap/)
 | **v1.0** | 15 Mayıs 2026 | İlk yayın · CU4-GDR baseline |
 | **v1.0.1** | 25 Mayıs 2026 | CU5 güncellemesi · baseline CU5'e |
 | **v1.0.2** | 19 Haziran 2026 | CU6 güncellemesi · baseline CU6'ya · Bölüm 9, 21 içerik |
+| **v1.0.3** | 27 Temmuz 2026 | CU7 + Temmuz güvenlik bandı · baseline CU7'ye · Bölüm 5, 8, 9, 12, 21, 22 içerik |
 | v1.0.x | Aylık | Errata + küçük güncellemeler |
-| **v1.1** | Mart 2027 | CU7-CU10 + EU AI Act yüksek risk yansıması |
+| **v1.1** | Mart 2027 | CU8-CU11 + EU AI Act yüksek risk yansıması |
 | v1.2 | Eylül 2027 | KVKK cirosal ceza sonrası uyum |
 | **v2.0** | 2028 | SQL Server vNext baskısı |
 

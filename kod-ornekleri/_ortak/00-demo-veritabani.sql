@@ -165,7 +165,9 @@ CREATE SCHEMA ai;
 GO
 
 CREATE TABLE ai.document_chunks (
-    chunk_id      BIGINT       NOT NULL IDENTITY PRIMARY KEY,
+    -- Vector index önkoşulu: clustered PK tek bir 4 baytlık INT sütun olmalı (Msg 42217).
+    -- BIGINT kullanılırsa CREATE VECTOR INDEX reddedilir.
+    chunk_id      INT          NOT NULL IDENTITY PRIMARY KEY,
     source_doc    NVARCHAR(200) NOT NULL,
     chunk_index   INT          NOT NULL,
     content       NVARCHAR(MAX) NOT NULL,

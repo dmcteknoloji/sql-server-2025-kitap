@@ -6,6 +6,54 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 
 ---
 
+## [v1.0.3] — 27 Temmuz 2026
+
+### CU7 + Temmuz güvenlik bandı güncellemesi
+
+Kitap baseline'ı CU6'dan CU7'ye (KB5096981, 16 Temmuz 2026, build 17.0.4065.4) güncellendi. CU7, CU6 sonrası 10 düzeltme taşır. İki gün önce, 14 Temmuz 2026'da yayımlanan iki GDR — RTM bandı için KB5102333 (17.0.1125.2), CU bandı için CU6+GDR KB5101346 (17.0.4060.2) — yedi CVE kapattı.
+
+#### Eklendi
+
+- **Bölüm 9 (Güvenlik), yeni bölüm — "Yama bantları: GDR mi, CU mu?":** GDR ve CU servisleme bantlarının farkı, Temmuz 2026'nın iki bandı aynı hafta getirmesi ve yedi CVE'nin tablosu
+- **Bölüm 9:** TLS 1.3'ü registry düzenlemeden açan trace flag (KB numarayı vermiyor — kitapta açıkça belirtildi); yalnızca TLS 1.3 etkinken SQL Server 2025 setup'ının başarısız olması; UCS ve Service Broker şifrelemesinin AES-256'ya çekilmesi; SSIS Message Queue Task'ta `BinaryMessageFormatter` desteğinin kaldırılması (kırıcı değişiklik)
+- **Bölüm 12 (Modern T-SQL):** `JSON_MODIFY` merge ve düğüm offset bozulma düzeltmeleri; `ALTER JSON INDEX REORGANIZE` dump düzeltmesi
+- **Bölüm 8 (Yüksek Erişilebilirlik):** read-intent secondary replica'larda aralıklı Msg 976 / 978 hataları
+- **Bölüm 5 (T-SQL Temelleri):** `EDIT_DISTANCE` taşma koruması ve fuzzy fonksiyonlarının MAX tip kabul etmemesi (Msg 8116)
+- **Bölüm 21 (Vector / DiskANN):** vector intrinsic'lerinde ve dinamik yönetim fonksiyonlarında bellek sızıntısı düzeltmesi
+- **Bölüm 22 (AI_GENERATE_EMBEDDINGS):** `EXTERNAL MODEL` nesnelerinde hatalı kimlik bilgisi işleme kaynaklı istenmeyen izin devralması + izin gözden geçirme notu
+
+#### Değiştirildi
+
+- Bölüm 1, 2, 3: sürüm referansları, `@@VERSION` ve ShowPlan `Build` çıktıları CU7'ye (RTM-CU7, build 17.0.4065.4) güncellendi
+- Bölüm 1'in sürüm çıktısı CU7 kurulu bir container'da yeniden koşturuldu; arşiv `kontrol/test-runs/ch01-01.txt`
+- Ön bölüm baseline notu, künye, sözlük CU/build girişleri CU7'ye güncellendi
+- Yol haritası: v1.1 kapsamı CU8-CU11 olarak güncellendi
+
+#### Kod örneği düzeltmeleri (CU7'de yeniden koşuldu)
+
+Tüm kod örnekleri CU7 kurulu bir instance'ta yeniden çalıştırıldı. Motor tarafından reddedilen ve düzeltilen maddeler:
+
+- **Vector index salt-okunur kısıtı (yeni içerik):** vector index kurulu tablo DML kabul etmez (Msg 42231). Bölüm 21'e önkoşul, Bölüm 24'e RAG hattının "partili ritim" tasarımı olarak eklendi. `ALLOW_STALE_VECTOR_INDEX` SQL Server 2025 CU7'de yok
+- **Clustered PK önkoşulu:** tek bir 4 baytlık `INT` sütun olmalı (Msg 42217); demo şemasındaki `chunk_id` `BIGINT` → `INT`
+- **FP16 sözdizimi:** `WITH (PRECISION = 'half')` geçersiz (Msg 155); half precision sütun tipinde verilir — `VECTOR(1536, float16)`
+- **"En az 100 satır" şartı:** Azure SQL / Fabric'teki yeni index sürümüne ait; CU7'de uygulanmıyor
+- `JSON_OBJECT` / `JSON_OBJECTAGG`'de `VALUE` yerine iki nokta sözdizimi; `CAST('false' AS JSON)` yerine `CAST(0 AS BIT)`
+- `REGEXP_MATCHES` sütun adı `match_position` değil `start_position`
+- `sys.tables`'ta `is_ledger` değil `ledger_type`; `sys.dm_db_vector_indexes` CU7'de yok, `sys.vector_indexes` kullanılır
+- Kilit bekleme sorgusu `sys.dm_tran_locks` ile join'e çevrildi; Resource Governor örneği idempotent hâle getirildi
+
+#### Known issue
+
+- `SESSION_CONTEXT` paralel plan'larda hatalı sonuç veya AV dump (CU5'ten devam)
+- `MSDASQL` sağlayıcısı + provider string ile linked server sorguları Msg 7416 ile başarısız olabilir (CU6'dan devam)
+
+#### Güvenlik
+
+- CVE-2026-47295, CVE-2026-47296, CVE-2026-55002, CVE-2026-54116 (ayrıcalık yükseltme); CVE-2026-50468 (bilgi ifşası); CVE-2026-54117, CVE-2026-54118 (uzaktan kod çalıştırma) — 14 Temmuz 2026 GDR'leriyle kapatıldı
+- CU7'nin kendi KB'sinde numaralı CVE listelenmedi; aynı MSMQ deserialization düzeltmesini taşır
+
+---
+
 ## [v1.0.2] — 19 Haziran 2026
 
 ### CU6 güncellemesi

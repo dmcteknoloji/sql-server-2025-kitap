@@ -5,12 +5,20 @@
 -- 2025'e upgrade öncesi tespit.
 -- ============================================================================
 
--- 2022'de Synapse Link özellikleri (2025'te yok)
-SELECT
-    DB_NAME(database_id) AS db_name,
-    is_link_to_synapse_enabled
-FROM sys.databases
-WHERE is_link_to_synapse_enabled = 1;
+-- 2022'de Synapse Link durumu sys.databases.is_link_to_synapse_enabled ile okunurdu.
+-- 2025'te özellik kaldırıldığı için SÜTUN DA YOKTUR; aşağıdaki sorgu
+-- SQL Server 2025'te Msg 207 (Invalid column name) verir:
+--
+--   SELECT DB_NAME(database_id), is_link_to_synapse_enabled
+--   FROM sys.databases WHERE is_link_to_synapse_enabled = 1;
+--
+-- Sürümden bağımsız çalışan tespit yöntemi: sütun var mı diye bak.
+IF EXISTS (SELECT 1 FROM sys.all_columns
+           WHERE object_id = OBJECT_ID('sys.databases')
+             AND name = 'is_link_to_synapse_enabled')
+    PRINT 'Synapse Link sütunu mevcut — bu instance 2022 veya öncesi.';
+ELSE
+    PRINT 'Synapse Link sütunu yok — bu instance 2025+. Göç hedefi: Fabric Mirroring (Bölüm 18).';
 GO
 
 -- Eğer 2022'den 2025'e upgrade yapıyorsanız ve Synapse Link aktifse:

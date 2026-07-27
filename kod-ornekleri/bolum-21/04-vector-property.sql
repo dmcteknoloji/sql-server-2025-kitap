@@ -53,8 +53,12 @@ LEFT JOIN sys.vector_indexes v
 WHERE i.type_desc LIKE N'%VECTOR%';
 GO
 
--- Örnek 5: Vector index sağlık DMV
-SELECT *
-FROM sys.dm_db_vector_indexes
-WHERE database_id = DB_ID();
+-- Örnek 5: Vector index katalog görünümü
+-- Not: 2025 CU7'de vector index'ler için ayrı bir sağlık DMV'si YOK;
+-- metadata sys.vector_indexes katalog görünümünden okunur.
+SELECT
+    OBJECT_NAME(v.object_id) AS table_name,
+    v.index_id,
+    v.build_parameters
+FROM sys.vector_indexes v;
 GO

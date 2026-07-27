@@ -64,5 +64,10 @@ GO
 -- ADO.NET, JDBC, ODBC, Python mssql-python hepsi destekler
 
 -- Server enclave durumu
-SELECT * FROM sys.dm_db_attestation_compute_capability;
+-- Not: sys.dm_db_attestation_compute_capability SQL Server 2025 CU7'de MEVCUT DEĞİL
+-- (Azure SQL Database'e ait bir DMV'dir). SQL Server tarafında enclave yapılandırması
+-- sunucu konfigürasyonundan okunur:
+SELECT name, value_in_use
+FROM sys.configurations
+WHERE name = 'column encryption enclave type';   -- 0 = kapalı, 1 = VBS
 GO
