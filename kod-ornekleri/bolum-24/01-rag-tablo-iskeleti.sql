@@ -2,7 +2,7 @@
 -- 01-rag-tablo-iskeleti.sql
 -- ----------------------------------------------------------------------------
 -- RAG (Retrieval-Augmented Generation) hattı için temel tablo iskeleti.
--- Doküman → chunk → embedding → arama → LLM yanıtı.
+-- Doküman, chunk, embedding, arama ve LLM yanıtı sırasıyla.
 -- ============================================================================
 
 USE demo;
@@ -27,7 +27,9 @@ GO
 IF OBJECT_ID('ai.chunks','U') IS NULL
 BEGIN
     CREATE TABLE ai.chunks (
-        chunk_id     BIGINT       NOT NULL IDENTITY PRIMARY KEY,
+        -- Vector index önkoşulu: clustered PK tek bir 4 baytlık INT sütun
+        -- olmalı (Msg 42217). BIGINT kullanılırsa CREATE VECTOR INDEX reddedilir.
+        chunk_id     INT          NOT NULL IDENTITY PRIMARY KEY,
         doc_id       BIGINT       NOT NULL REFERENCES ai.documents(doc_id),
         chunk_index  INT          NOT NULL,
         content      NVARCHAR(MAX) NOT NULL,

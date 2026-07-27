@@ -38,7 +38,7 @@ GO
 IF OBJECT_ID('ai.embedding_queue','U') IS NULL
 BEGIN
     CREATE TABLE ai.embedding_queue (
-        chunk_id BIGINT NOT NULL PRIMARY KEY REFERENCES ai.document_chunks(chunk_id),
+        chunk_id INT NOT NULL PRIMARY KEY REFERENCES ai.document_chunks(chunk_id),
         queued_at DATETIME2(0) NOT NULL DEFAULT SYSUTCDATETIME(),
         last_attempt DATETIME2(0) NULL,
         attempts INT NOT NULL DEFAULT 0,

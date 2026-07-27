@@ -123,7 +123,7 @@ Vector index (Bölüm 21, 24), dördü de motorda doğrulandı:
 
 `ALLOW_STALE_VECTOR_INDEX` SQL Server 2025 CU7'de ne veritabanı ne sunucu kapsamında mevcut değil. Learn'ün ilgili cümleleri Azure SQL / Fabric'teki yeni index sürümü içindir; belgeyi okurken hangi ürün için yazıldığına bakın.
 
-Demo şeması düzeltildi: `ai.document_chunks.chunk_id` `BIGINT` → `INT` (aksi hâlde vector index örneği hiç çalışmıyordu).
+Demo şeması düzeltildi: `ai.document_chunks.chunk_id` `BIGINT` yerine `INT` (aksi hâlde vector index örneği hiç çalışmıyordu).
 
 Kod örneği düzeltmeleri:
 
@@ -181,7 +181,7 @@ Bu kısıtlar v1.0'da kabul edildi; çoğu çevresel veya zaman bağımlı. v1.1
 
 ## Hata bildirme
 
-GitHub'da bir issue açın: [Issues → New → Errata template](../../issues/new?template=errata.md)
+GitHub'da bir issue açın: [Issues, New, Errata şablonu](../../issues/new?template=errata.md)
 
 Form:
 - Sayfa numarası

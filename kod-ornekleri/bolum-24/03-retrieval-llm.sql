@@ -21,7 +21,7 @@ DECLARE @start_time DATETIME2 = SYSUTCDATETIME();
 SET @query_vec = AI_GENERATE_EMBEDDINGS(@query USE MODEL Ada2Embeddings);
 
 -- 2) En yakın N chunk (VECTOR_SEARCH — APPROXIMATE DiskANN)
-DECLARE @top_chunks TABLE (rn INT, chunk_id BIGINT, content NVARCHAR(MAX), distance FLOAT);
+DECLARE @top_chunks TABLE (rn INT, chunk_id INT, content NVARCHAR(MAX), distance FLOAT);
 
 INSERT INTO @top_chunks
 SELECT TOP(@top_k)

@@ -54,5 +54,5 @@ BEGIN
 END;
 GO
 
--- Bi-encoder (vector + BM25 + RRF) → Cross-encoder (rerank) pipeline
+-- Önce bi-encoder (vector + BM25 + RRF), sonra cross-encoder (rerank) pipeline
 -- Precision@5'i tipik %20-40 artırır

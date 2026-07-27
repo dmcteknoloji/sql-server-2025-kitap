@@ -9,8 +9,15 @@ USE master;
 GO
 
 -- Dedicated resource pool
-IF EXISTS (SELECT 1 FROM sys.dm_resource_governor_resource_pools WHERE name = N'pool_mirror')
+-- Sıra önemli: workload group, bağlı olduğu pool'dan ÖNCE düşürülmeli (Msg 10916).
+IF EXISTS (SELECT 1 FROM sys.resource_governor_workload_groups WHERE name = N'wg_mirror')
+    DROP WORKLOAD GROUP wg_mirror;
+GO
+IF EXISTS (SELECT 1 FROM sys.resource_governor_resource_pools WHERE name = N'pool_mirror')
     DROP RESOURCE POOL pool_mirror;
+GO
+ALTER RESOURCE GOVERNOR RECONFIGURE;
+GO
 
 CREATE RESOURCE POOL pool_mirror
 WITH (

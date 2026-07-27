@@ -36,9 +36,14 @@ EXEC sys.sp_add_object_to_event_stream_group
     @object_name = N'sales.order_items';
 GO
 
--- 5) Group başlat
-EXEC sys.sp_start_event_stream_group
-    @event_stream_group_name = N'orders_stream';
+-- 5) Akışı başlat
+-- Not: sp_start_event_stream_group / sp_stop_event_stream_group diye yordamlar
+-- YOKTUR. CES veritabanı düzeyinde açılıp kapatılır; group'lar sp_create_* /
+-- sp_drop_* ile yönetilir. Mevcut yordamlar:
+--   sp_enable_event_stream, sp_disable_event_stream,
+--   sp_create_event_stream_group, sp_drop_event_stream_group,
+--   sp_add_object_to_event_stream_group, sp_remove_object_from_event_stream_group
+EXEC sys.sp_enable_event_stream;
 GO
 
 -- 6) Durum
@@ -57,5 +62,5 @@ ORDER BY start_time DESC;
 GO
 
 -- Durdur ve sil (örnek)
--- EXEC sys.sp_stop_event_stream_group @event_stream_group_name = N'orders_stream';
+-- EXEC sys.sp_disable_event_stream;   -- veritabanı düzeyinde durdurur
 -- EXEC sys.sp_drop_event_stream_group @event_stream_group_name = N'orders_stream';

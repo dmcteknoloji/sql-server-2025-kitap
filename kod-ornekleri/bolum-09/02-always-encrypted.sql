@@ -33,7 +33,7 @@ WITH VALUES (
 GO
 */
 
--- DOĞRU YÖNTEM: SSMS → Tasks → Encrypt Columns → wizard
+-- DOĞRU YÖNTEM: SSMS, Tasks, Encrypt Columns menüsünden wizard
 -- ya da PowerShell: Set-SqlColumnEncryption (SqlServer modülü).
 -- Bu script tanıtıcı amaçlı; üretim akışı tool-driven.
 PRINT N'Always Encrypted: CMK/CEK üretimi için SSMS wizard veya SqlServer PowerShell modülü kullanın.';

@@ -38,8 +38,8 @@ sqlcmd -S '<server>' -U '<user>' -P '<pwd>' -d 'master' -C \
 **Beklenen çıktı:** "Demo veritabanı hazır: sales (relational), social (graph), ai (vector)."
 
 **Hata varsa:**
-- "CREATE DATABASE permission denied" → sysadmin yetkisi gerek
-- "schema already exists" → eski 'demo' DB var; script DROP/CREATE yapacak (zaten)
+- "CREATE DATABASE permission denied": sysadmin yetkisi gerek
+- "schema already exists": eski 'demo' DB var; script DROP/CREATE yapacak (zaten)
 
 ---
 
@@ -125,7 +125,7 @@ Bu adımlar sonrası ilgili FAIL'lar OK'a döner.
 
 ---
 
-## Adım 6 — Yeni FAIL → errata kararı (30 dk)
+## Adım 6 — Yeni FAIL için errata kararı (30 dk)
 
 Her yeni FAIL için karar:
 
@@ -157,4 +157,4 @@ tar -czf kontrol/test-runs-$(date +%Y%m%d).tar.gz kontrol/test-runs/
 # Daha sonra v1.1 zamanında karşılaştırma için saklanır
 ```
 
-Süreç tamamlandığında: bug listesi → düzeltme (varsa) → final PDF re-derleme → lansman.
+Süreç tamamlandığında: bug listesi, düzeltme (varsa), final PDF re-derleme, lansman.

@@ -35,7 +35,7 @@ DECLARE @prefs JSON = N'{
 }';
 
 -- SMS'i aç, yeni kategori ekle
--- JSON_MODIFY ile boolean atamak için BIT tipi kullanılır (true → 1)
+-- JSON_MODIFY ile boolean atamak için BIT tipi kullanılır (true yerine 1)
 SET @prefs = JSON_MODIFY(@prefs, '$.notifications.sms', CAST(1 AS BIT));
 SET @prefs = JSON_MODIFY(@prefs, 'append $.favorite_categories', N'Gıda');
 

@@ -24,7 +24,7 @@ Aşağıdakiler çevresel kısıt değil, **gerçek hataydı**; hepsi motor tara
 
 `ALLOW_STALE_VECTOR_INDEX` SQL Server 2025 CU7'de ne veritabanı ne sunucu kapsamında mevcut değil. Learn'ün DML desteğinden söz eden cümleleri Azure SQL / Fabric'teki yeni index sürümü içindir.
 
-Yan etki: `chunk_id` sütunları `BIGINT` → `INT`'e çekildi (`_ortak/00-demo-veritabani.sql`, `bolum-24/01`, `bolum-22/06`, `bolum-24/03`).
+Yan etki: `chunk_id` sütunları `BIGINT` yerine `INT`'e çekildi (`_ortak/00-demo-veritabani.sql`, `bolum-24/01`, `bolum-22/06`, `bolum-24/03`).
 
 ### Change Event Streaming (Bölüm 19)
 

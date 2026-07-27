@@ -34,7 +34,7 @@ Kitap baseline'ı CU6'dan CU7'ye (KB5096981, 16 Temmuz 2026, build 17.0.4065.4) 
 Tüm kod örnekleri CU7 kurulu bir instance'ta yeniden çalıştırıldı. Motor tarafından reddedilen ve düzeltilen maddeler:
 
 - **Vector index salt-okunur kısıtı (yeni içerik):** vector index kurulu tablo DML kabul etmez (Msg 42231). Bölüm 21'e önkoşul, Bölüm 24'e RAG hattının "partili ritim" tasarımı olarak eklendi. `ALLOW_STALE_VECTOR_INDEX` SQL Server 2025 CU7'de yok
-- **Clustered PK önkoşulu:** tek bir 4 baytlık `INT` sütun olmalı (Msg 42217); demo şemasındaki `chunk_id` `BIGINT` → `INT`
+- **Clustered PK önkoşulu:** tek bir 4 baytlık `INT` sütun olmalı (Msg 42217); demo şemasındaki `chunk_id` `BIGINT` yerine `INT`
 - **FP16 sözdizimi:** `WITH (PRECISION = 'half')` geçersiz (Msg 155); half precision sütun tipinde verilir — `VECTOR(1536, float16)`
 - **"En az 100 satır" şartı:** Azure SQL / Fabric'teki yeni index sürümüne ait; CU7'de uygulanmıyor
 - `JSON_OBJECT` / `JSON_OBJECTAGG`'de `VALUE` yerine iki nokta sözdizimi; `CAST('false' AS JSON)` yerine `CAST(0 AS BIT)`
@@ -138,7 +138,7 @@ Kitap baseline'ı CU4'ten CU5'e (KB5084896, 20 Mayıs 2026, build 17.0.4045.5) g
 - **12 SVG diyagram** (kronoloji, modern mimari, HNSW, RAG, AI pipeline, AI-ready, regulation, rowgroup lifecycle, embedding pipeline, hybrid search, HTAP, MCP agent flow)
 - **100+ T-SQL kod örneği** test edilmiş ve doğrulanmış (`kod-ornekleri/` repo'da)
 - **Test koşum altyapısı:** `kontrol/run-tests.sh` credential maskeli batch runner
-- **Build pipeline:** WeasyPrint 68.1 + cairosvg + Python 3.11 (HTML/CSS → tek-PDF)
+- **Build pipeline:** WeasyPrint 68.1 + cairosvg + Python 3.11 (HTML/CSS kaynaktan tek-PDF)
 
 #### Baseline
 
@@ -191,7 +191,7 @@ Kitap baseline'ı CU4'ten CU5'e (KB5084896, 20 Mayıs 2026, build 17.0.4045.5) g
 
 ## Sürüm bildirimleri
 
-GitHub Releases üzerinden bildirim almak için: [Watch → Releases only](../..)
+GitHub Releases üzerinden bildirim almak için: [Watch, Releases only](../..)
 
 Önemli güncellemeler ayrıca caglarozenc.com/kitap/changelog ve [@caglarozenc Twitter](https://twitter.com/caglarozenc) üzerinden duyurulur.
 

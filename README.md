@@ -23,9 +23,9 @@
 
 ## Kitabı indir
 
-📖 **PDF (ücretsiz):** [GitHub Releases → Latest](../../releases/latest)
-🌐 **Landing sayfası:** [caglarozenc.com/kitap/sqlserver2025](https://caglarozenc.com/kitap/sqlserver2025) — kitap detayları, içerikler, yol haritası
-📚 **Fiziksel baskı (700 ₺, opsiyonel destekçi):** 448 sayfa ofset ciltli edition, Türkiye kargo + ambalaj dahil. PDF/EPUB zaten ücretsiz; fiziksel kopya eseri rafta görmek isteyen ve topluluk yayın bakımına destekçi katkı sunmak isteyen okur içindir. [DMC ile iletişime geçin](https://dmcteknoloji.com/iletisim)
+**PDF (ücretsiz):** [GitHub Releases, son sürüm](../../releases/latest)
+**Landing sayfası:** [caglarozenc.com/kitap/sqlserver2025](https://caglarozenc.com/kitap/sqlserver2025) — kitap detayları, içerikler, yol haritası
+**Fiziksel baskı (ön talep, 700 ₺):** Baskı henüz yapılmadı. SQL Server 2025 Microsoft tarafından geliştirilmeye devam eden yaşayan bir sistem; kitap her cumulative update ile güncelleniyor. Baskı, metin oturduğunda ve yeterli talep oluştuğunda yapılacak. PDF zaten ücretsiz; fiziksel kopya isteyen okur ilgisini bildirebilir. [DMC ile iletişime geçin](https://dmcteknoloji.com/iletisim)
 
 ## Bu repo'da ne var?
 
