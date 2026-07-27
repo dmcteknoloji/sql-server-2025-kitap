@@ -9,7 +9,7 @@
 
 **Yazar:** Çağlar Özenç · Microsoft Data Platform MVP
 **Yayıncı:** DMC Bilgi Teknolojileri · İstanbul
-**Sürüm:** v1.0.3 (27 Temmuz 2026)
+**Sürüm:** v1.0.3 (27 Temmuz 2026) · 462 sayfa
 **Baseline:** SQL Server 2025 CU7 (KB5096981) · build 17.0.4065.4 · Compatibility Level 170
 
 > **Repo durumu**
