@@ -1,7 +1,7 @@
 # Errata — SQL Server 2025: Herkes İçin, Her Rol İçin
 
-**Sürüm:** v1.0.3 (27 Temmuz 2026)
-**Son güncelleme:** 27 Temmuz 2026 — CU7 + Temmuz güvenlik bandı
+**Sürüm:** v1.0.3.1 (12 Ağustos 2026)
+**Son güncelleme:** 12 Ağustos 2026 — EU AI Act errata (Digital Omnibus)
 **Kaynak:** [Issues `errata` etiketi](../../issues?q=label%3Aerrata)
 
 Bu sayfa kitabın v1.0 baskısındaki düzeltmelerin canlı listesidir. Bir hata fark ettiyseniz [issue açın](../../issues/new?template=errata.md), `errata` etiketiyle. Doğrulandığında bu sayfaya işlenir; v1.1'de gövdeye yansır.
@@ -10,7 +10,21 @@ Bu sayfa kitabın v1.0 baskısındaki düzeltmelerin canlı listesidir. Bir hata
 
 ## Düzeltmeler
 
-> Lansman gününde bu bölüm boş başlar. Okuyucu katkılarıyla aşağıdaki şablonda büyür:
+### Bölüm 28 / Bölüm 31 — EU AI Act yüksek risk takvimi (v1.0.3.1)
+
+**İlgili yerler:** Bölüm 28 (giriş özeti, güncelleme kutusu, zaman çizelgesi, before-after, Kısa kısa), Bölüm 31 (2027 dalgası + yol haritası), Sözlük.
+
+Yanlış: "2 Ağustos 2026 — tam yükümlülükler; Annex III yüksek risk AI sistemleri için tam uyum şartı."
+
+Doğru: AB'nin "Digital Omnibus on AI" düzenlemesiyle yüksek risk yükümlülükleri ertelendi — Annex III bağımsız sistemler **2 Aralık 2027**, düzenlenmiş ürünlere gömülü (Annex I) sistemler **2 Ağustos 2028**. Madde 50 şeffaflık yükümlülükleri ertelenmedi; 2 Ağustos 2026'da yürürlüğe girdi.
+
+Kaynak: Digital Omnibus on AI — Freshfields ve Gibson Dunn analizleri. Omnibus AB Parlamentosu (16 Haziran) + Konsey (29 Haziran 2026) onayı; Temmuz 2026 yürürlük.
+Bildiren: Yayıncı (düzenleyici takip)
+Tarih: 2026-08-12
+
+---
+
+> Diğer düzeltmeler okuyucu katkılarıyla aşağıdaki şablonda büyür:
 
 ```
 ### Sayfa NN / Bölüm M — [kısa konu]

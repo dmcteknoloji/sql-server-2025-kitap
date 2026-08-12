@@ -6,6 +6,24 @@ Format: [Keep a Changelog](https://keepachangelog.com/) tarzı; [Semantic Versio
 
 ---
 
+## [v1.0.3.1] — 12 Ağustos 2026
+
+### EU AI Act errata (CU baseline değişmedi)
+
+AB'nin "Digital Omnibus on AI" düzenlemesi yüksek risk AI yükümlülüklerini erteledi. Kitabın önceki baskılarında "2 Ağustos 2026 = yüksek risk tam uyum şartı" olarak geçen ifade düzeltildi.
+
+#### Değiştirildi
+
+- **Bölüm 28 (KVKK / EU AI Act):** yüksek risk yükümlülükleri Annex III bağımsız sistemler için **2 Aralık 2027**, düzenlenmiş ürünlere gömülü (Annex I) sistemler için **2 Ağustos 2028**. Madde 50 şeffaflık yükümlülükleri ertelenmedi — 2 Ağustos 2026'da yürürlükte. Giriş özeti, güncelleme kutusu, zaman çizelgesi, before-after ve "Kısa kısa" bölümleri güncellendi; İleri okuma'ya kaynaklar eklendi
+- **Bölüm 31 (2027 ve Sonrası):** regulated-AI dalgası ve yol haritası dört noktada güncellendi
+- **Sözlük ve önsöz baseline notu:** aynı düzeltme
+
+#### Kaynak
+
+- Digital Omnibus on AI analizleri (Freshfields, Gibson Dunn). Omnibus: Avrupa Parlamentosu 16 Haziran, AB Konseyi 29 Haziran 2026 onayı; Temmuz 2026 yürürlük
+
+---
+
 ## [v1.0.3] — 27 Temmuz 2026
 
 ### CU7 + Temmuz güvenlik bandı güncellemesi
